@@ -22,7 +22,15 @@ describe 'Testing the units in prime class' do
     	expect(@test.stored_primes).not_to be_empty
 	end
 
-	it 'gets all prime numbes in a small range' do
+	it 'only accepts valid range arguments' do
+    	@test.store_primes_from_range("1", 10)
+    	@test.store_primes_from_range(1, "10")
+    	@test.store_primes_from_range('2', '3')
+    	@test.store_primes_from_range(2.0, 10)
+    	expect(@test.stored_primes).to be_empty
+	end
+
+	it 'gets all prime numbers in a small range' do
 		@test.store_primes_from_range(0, 10)
     	expect(@test.stored_primes).to eq [2,3,5,7]
 	end
