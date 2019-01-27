@@ -6,9 +6,27 @@ class PrimeNumberGenerator
 		@stored_primes = Array.new
 	end
 
+	def run
+		puts "Enter first number"
+		value_1 = gets.chomp
+		puts "Enter second number"
+		value_2 = gets.chomp
+
+		unless is_numeric(value_1) && is_numeric(value_2)
+			puts "Error: perhaps one or both of your range values are invalid: try again"
+		else
+			generate(value_1.to_i, value_2.to_i)
+			puts "These are all #{stored_primes.length} prime numbers "\
+				"between #{value_1} and #{value_2}: #{stored_primes.join(', ')}"
+		end
+	end
+
+	private
+
+	def is_numeric value
+		true if Integer(value) != nil rescue false
+	end
+
 end
 
-run = PrimeNumberGenerator.new
-run.generate(ARGV[0].to_i, ARGV[1].to_i)
-puts run.stored_primes
-run.stored_primes.clear
+PrimeNumberGenerator.new.run if __FILE__ == $0

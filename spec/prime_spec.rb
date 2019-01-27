@@ -30,6 +30,7 @@ describe 'Testing the units in prime class' do
 	it 'only accepts valid class type arguments for generate range input' do
     	@test.generate("1", 10)
     	@test.generate(1, "10")
+    	@test.generate("t", 10)
     	@test.generate('2', '3')
     	@test.generate(2.0, 10)
     	expect(@test.stored_primes).to be_empty
@@ -54,11 +55,13 @@ describe 'Testing the units in prime class' do
 		@test.generate(0, 101)
 		expect(@test.stored_primes).to eq [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 
 			41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101]
+		expect(@test.stored_primes.length).to eq 26
 	end
 
-	it 'will not accept negative values as arguments' do
+	it 'will not accept negative values as range arguments' do
 		@test.generate(-1, 10)
 		@test.generate(10, -1)
+		@test.generate(-10, -1)
     	expect(@test.stored_primes).to be_empty
 	end
 
