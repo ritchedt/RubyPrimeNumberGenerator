@@ -22,6 +22,10 @@ describe 'Testing the units in prime class' do
     	expect(@test.stored_primes).not_to be_empty
 	end
 
+	it "should raise an ArgumentError error for incomplete range input" do
+		expect { @test.store_primes_from_range(0) }.to raise_error(ArgumentError)
+	end
+
 	it 'only accepts valid class type arguments' do
     	@test.store_primes_from_range("1", 10)
     	@test.store_primes_from_range(1, "10")
