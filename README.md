@@ -18,3 +18,5 @@
 
 ### Run all tests
 `$ rspec`
+
+-> Achieved 100% code coverage for unit tests excluding run main method and is_numeric helper method in PrimeNumberGenerator class
