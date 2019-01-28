@@ -3,28 +3,22 @@ module Prime
 	attr_accessor :stored_primes
 
 	def generate(input_1, input_2)
-		return @stored_primes unless input_1.is_a?(Integer) && input_2.is_a?(Integer)
+		num_range = [input_1, input_2]
 
 		# positive? Numeric method is compatible with ruby v.2.3.0+ 
-		return @stored_primes unless input_1 >= 0 && input_2 >= 0
+		return @stored_primes unless num_range.all? {|input| input.is_a?(Integer) && input >= 0}
 
-		max = input_2 > input_1 ? input_2 : input_1
-		min = input_2 < input_1 ? input_2 : input_1
-
-		(min..max).each do |value|
+		(num_range.min..num_range.max).each do |value|
 			@stored_primes << value if is_prime(value)
 		end
 	end
 
 	def is_prime number
-    	return false unless number.is_a?(Integer)
-    	return false if (number.even? && number != 2) || number < 2
+    	return false if !number.is_a?(Integer) || (number.even? && number != 2) || number < 2
 
     	(number/2).downto(3) { |value|
     		next if value.even?
-    		if number % value == 0
-    			return false
-    		end
+    		return false if number % value == 0
     	}
     	true
 	end
