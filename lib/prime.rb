@@ -2,6 +2,11 @@ module Prime
 
 	attr_accessor :stored_primes
 
+	# Accepts two inputs and stores integers in that range that are prime in an array.
+	# Handles inverse ranges.
+	# Params:
+	# + input_1 +:: first part of searched prime number range
+	# + input_2 +:: second part of the searched prime number range
 	def generate(input_1, input_2)
 		num_range = [input_1, input_2]
 
@@ -13,6 +18,10 @@ module Prime
 		end
 	end
 
+	# Boolean: Determins whether input is a prime number. Returns false unless input is
+	# a positive prime integer >=2.
+	# Params:
+	# + number +:: first part of searched prime number range
 	def is_prime number
     	return false if !number.is_a?(Integer) || (number.even? && number != 2) || number < 2
 
