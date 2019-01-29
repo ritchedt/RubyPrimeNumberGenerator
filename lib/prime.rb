@@ -2,7 +2,7 @@ module Prime
 
 	attr_accessor :stored_primes
 
-	# Accepts two inputs and stores integers in that range that are prime in an array.
+	# Accepts two inputs and stores valid integers in that range that are prime in an array.
 	# Handles inverse ranges.
 	# Params:
 	# + input_1 +:: first part of searched prime number range
